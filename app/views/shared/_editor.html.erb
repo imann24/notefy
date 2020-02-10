@@ -1,0 +1,21 @@
+<body>
+    <div class="container">
+        <div class="row" id="header">
+            <h1 class="col-auto mr-auto">Notefy</h1>
+        </div>
+        <% if @note %>
+            <input id="title" class="form-control" type="text" placeholder="title" value="<%= @note.title %>">
+        <% else %>
+            <input id="title" class="form-control" type="text" placeholder="title">
+        <% end %>
+        <div id="editor"></div>
+        <div class="row" id="footer">
+            <button id="save" type="button" class="btn btn-primary">Save</button>
+        </div>
+    <div>
+    <% if @note %>
+        <div id="hidden-id" style="display: none"><%= @note.id %></div>
+        <div id="hidden-text" style="display: none"><%= @note.text %></div>
+    <% end %>
+    <%= javascript_pack_tag 'editor', 'data-turbolinks-track': 'reload' %>
+</body>
