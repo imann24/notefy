@@ -8,7 +8,7 @@ let resourceId;
 const saveNote = () => {
     const payload = {
         title: title.value,
-        text: editor.getText()
+        text: JSON.stringify(editor.getContents())
     };
     if (resourceId) {
         axios.patch(`/note/${resourceId}`, payload);
@@ -31,7 +31,7 @@ const setupEditor = () => {
     if (resourceId && existingText) {
         resourceId = resourceId.innerText;
         existingText = existingText.innerText;
-        editor.setText(existingText);
+        editor.setContents(JSON.parse(existingText));
     }
     title = document.getElementById("title");
 }
